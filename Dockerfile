@@ -1,4 +1,4 @@
-From nvcr.io/nvidia/pytorch:19.04-py3
+FROM nvcr.io/nvidia/pytorch:19.04-py3
 
 RUN apt-get -y update && apt-get install -y \
 	python3-pip \
@@ -55,14 +55,6 @@ RUN chmod +x /usr/local/bin/run_notebook
 RUN chmod +x /usr/local/bin/run_image_api
 RUN chmod +x /usr/local/bin/run_video_api
 
-EXPOSE 8888
-EXPOSE 5000
+EXPOSE 80
 
-# run notebook
-# ENTRYPOINT ["sh", "run_notebook"]
-
-# run image api
-# ENTRYPOINT ["sh", "run_image_api"]
-
-# run image api
-# ENTRYPOINT ["sh", "run_video_api"]
+CMD ["python", "app.py"]
